@@ -6,11 +6,13 @@ using System.Windows.Forms;
 
 namespace BdiExamen.WinFormsExamen
 {
+    // Formulario principal para la gestión de exámenes
     public partial class frmExamen : Form
     {
         private readonly IExamenService _service;
         private int? _selectedId = null;
-
+        // Constructor del formulario que inicializa los componentes y el servicio de examen
+        // Se inyecta una instancia concreta de ExamenService para manejar la lógica de negocio relacionada con los exámenes.
         public frmExamen()
         {
             InitializeComponent();
@@ -21,7 +23,8 @@ namespace BdiExamen.WinFormsExamen
         {
             await CargarExamenes();
         }
-
+        // Evento que se dispara al hacer clic en el botón de consulta
+        // Recoge los filtros de la interfaz, llama al servicio para obtener los resultados y actualiza el DataGridView con los datos obtenidos.
         private async void btnConsultar_Click(object sender, EventArgs e)
         {
             try
@@ -48,7 +51,7 @@ namespace BdiExamen.WinFormsExamen
                 MostrarMensaje($"Error: {ex.Message}", true);
             }
         }
-
+        // Método privado que carga los exámenes desde el servicio y los muestra en el DataGridView
         private async Task CargarExamenes()
         {
             try
@@ -64,7 +67,8 @@ namespace BdiExamen.WinFormsExamen
                 MostrarMensaje($"Error al cargar: {ex.Message}", true);
             }
         }
-
+        // Evento que se dispara al hacer clic en una celda del DataGridView
+        // Permite seleccionar un examen y cargar sus datos en los campos de texto para su edición
         private void dgvExamenes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -75,7 +79,8 @@ namespace BdiExamen.WinFormsExamen
                 txtDescripcion.Text = fila.Cells["Descripcion"].Value?.ToString() ?? "";
             }
         }
-
+        // Evento que se dispara al hacer clic en el botón de guardar
+        // Valida los campos, determina si se trata de una actualización o un nuevo registro y llama al servicio correspondiente
         private async void btnGuardar_Click(object sender, EventArgs e)
         {
             if (ValidarCampos())
@@ -117,7 +122,8 @@ namespace BdiExamen.WinFormsExamen
                 }
             }
         }
-
+        // Evento que se dispara al hacer clic en el botón de eliminar
+        // Valida si hay un examen seleccionado, solicita confirmación al usuario y llama al servicio para eliminar el examen
         private async void btnEliminar_Click(object sender, EventArgs e)
         {
             if (!_selectedId.HasValue)
@@ -158,7 +164,7 @@ namespace BdiExamen.WinFormsExamen
         {
             LimpiarFiltros();
         }
-
+        // Método privado que valida los campos de entrada antes de guardar o actualizar un examen
         private bool ValidarCampos()
         {
             if (string.IsNullOrWhiteSpace(txtNombre.Text))
@@ -183,7 +189,8 @@ namespace BdiExamen.WinFormsExamen
             txtFiltroDescripcion.Text = "";
             await CargarExamenes();
         }
-
+        // Método privado que muestra un mensaje en la barra de estado del formulario
+        // Cambia el color de fondo y del texto según si es un mensaje de error o de éxito
         private void MostrarMensaje(string mensaje, bool esError)
         {
             statusStrip1.BackColor = esError ? System.Drawing.Color.FromArgb(255, 200, 200) : System.Drawing.Color.FromArgb(200, 255, 200);
