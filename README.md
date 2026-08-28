@@ -169,7 +169,7 @@ Notas:
 
 ## Cómo compilar y ejecutar
 
-1. **Base de datos**: ejecutar los scripts de `1 Scripts\` en orden numerado (`01` → `07`).
+1. **Base de datos**: ejecutar los scripts de `1 Scripts\` en orden numerado (`01` → `06`, `07` es opcional y permite poblar la base de datos con datos de prueba).
 2. **WebService**: abrir `2 Solution\BdiExamen.slnx`, publicar/ejecutar `BdiExamen.WsApiexamen` (URL por defecto `https://localhost:44352`). Verificar que la `WsApiexamenBaseUrl` del front consumido (`BdiExamen.MvcExamen\Web.config`, o agregarla en `BdiExamen.WinFormsExamen\App.config` para el modo WebService) coincida con la URL del WebService.
 3. **Front**: ejecutar `BdiExamen.WinFormsExamen` (escritorio) o `BdiExamen.MvcExamen` (web).
 4. El modo de acceso (SP/WebService) se selecciona al crear `clsExamen` (`ModoAcceso`).
