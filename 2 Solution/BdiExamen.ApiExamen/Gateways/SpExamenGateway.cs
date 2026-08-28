@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace BdiExamen.ApiExamen.Gateways
 {
+    // Implementación de IExamenGateway que utiliza procedimientos almacenados (Stored Procedures) para interactuar con la base de datos.
+    // Esta clase encapsula la lógica de acceso a datos y maneja la conexión, ejecución de comandos y manejo de resultados.
+    // Cada método devuelve un objeto de resultado estandarizado (AgregarResult, OperationResult, ConsultaResult) que indica el éxito o fallo de la operación.
     public class SpExamenGateway : IExamenGateway
     {
         private readonly string _connectionString;

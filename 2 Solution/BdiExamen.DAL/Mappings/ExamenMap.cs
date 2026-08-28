@@ -3,8 +3,11 @@ using BdiExamen.Model.Entities;
 
 namespace BdiExamen.DAL.Mappings
 {
+    // Clase de mapeo para la entidad Examen, que define cómo se mapea a la base de datos.
     public class ExamenMap : EntityTypeConfiguration<Examen>
     {
+        // Constructor que configura el mapeo de la entidad Examen a la tabla tblExamen en la base de datos.
+        // Define la clave primaria, las propiedades y sus restricciones.
         public ExamenMap()
         {
             ToTable("tblExamen");

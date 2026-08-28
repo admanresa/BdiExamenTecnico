@@ -13,13 +13,16 @@ namespace BdiExamen.ApiExamen
     {
         private readonly IExamenGateway _gateway;
         private readonly ExamenValidator _validator;
-
+        // Constructor que inicializa el gateway y el validador según el modo de acceso especificado.
         public clsExamen(ModoAcceso modo)
         {
             _gateway = ExamenGatewayFactory.Crear(modo);
             _validator = new ExamenValidator();
         }
+        // Todos los métodos públicos de esta clase son asíncronos y devuelven tareas que se pueden esperar para mejorar el rendimiento.
 
+        // Método público para agregar un examen. Valida los parámetros antes de llamar al gateway.
+        // Devuelve un objeto AgregarResult que indica si la operación fue exitosa o fallida.
         public async Task<AgregarResult> AgregarExamen(string nombre, string descripcion)
         {
             if (!_validator.EsValido(nombre, descripcion, out List<string> errores))
@@ -27,7 +30,8 @@ namespace BdiExamen.ApiExamen
 
             return await _gateway.AgregarAsync(nombre, descripcion);
         }
-
+        // Método público para actualizar un examen existente. Valida el id y los parámetros antes de llamar al gateway.
+        // Devuelve un objeto OperationResult que indica si la operación fue exitosa o fallida.
         public async Task<OperationResult> ActualizarExamen(int id, string nombre, string descripcion)
         {
             if (!_validator.IdValido(id, out string errorId))
@@ -38,7 +42,8 @@ namespace BdiExamen.ApiExamen
 
             return await _gateway.ActualizarAsync(id, nombre, descripcion);
         }
-
+        // Método público para eliminar un examen existente. Valida el id antes de llamar al gateway.
+        // Devuelve un objeto OperationResult que indica si la operación fue exitosa o fallida.
         public async Task<OperationResult> EliminarExamen(int id)
         {
             if (!_validator.IdValido(id, out string errorId))
@@ -46,7 +51,8 @@ namespace BdiExamen.ApiExamen
 
             return await _gateway.EliminarAsync(id);
         }
-
+        // Método público para consultar exámenes existentes. Valida los parámetros antes de llamar al gateway.
+        // Devuelve un objeto ConsultaResult que contiene la lista de exámenes encontrados o un mensaje de error.
         public async Task<ConsultaResult> ConsultarExamen(int? id, string nombre, string descripcion)
         {
             return await _gateway.ConsultarAsync(id, nombre, descripcion);

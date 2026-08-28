@@ -8,6 +8,9 @@ using BdiExamen.Model.Dtos;
 
 namespace BdiExamen.ApiExamen.Gateways
 {
+    // Implementación de IExamenGateway que utiliza un servicio web RESTful para interactuar con la fuente de datos de exámenes.
+    // Esta clase encapsula la lógica de acceso a datos a través de HTTP, manejando las solicitudes y respuestas JSON.
+    // Cada método devuelve un objeto de resultado estandarizado (AgregarResult, OperationResult, ConsultaResult) que indica el éxito o fallo de la operación.
     public class WebServiceExamenGateway : IExamenGateway
     {
         private readonly string _baseUrl;

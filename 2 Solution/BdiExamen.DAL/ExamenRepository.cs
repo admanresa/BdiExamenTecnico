@@ -6,10 +6,19 @@ using BdiExamen.Model.Entities;
 
 namespace BdiExamen.DAL
 {
+    // Repositorio para la entidad Examen.
+    // Implementa la interfaz IExamenRepository para proporcionar métodos de acceso a datos.
+    // Contiene métodos para agregar, actualizar, eliminar y consultar exámenes en la base de datos.
+    // Cada método maneja transacciones y excepciones, devolviendo resultados estandarizados mediante objetos de resultado (AgregarResult, OperationResult, ConsultaResult).
+    // Esta clase es parte del patrón de diseño Repository y Unit of Work, facilitando la gestión de datos en la aplicación.
     public class ExamenRepository : IExamenRepository
     {
         private const string NoExisteMensaje = "No se encontró un registro con el Id indicado.";
 
+        // Agrega un nuevo examen a la base de datos.
+        // Devuelve un objeto AgregarResult que indica si la operación fue exitosa o fallida.
+        // En caso de éxito, incluye el Id del nuevo registro y un mensaje de confirmación.
+        // En caso de fallo, incluye un código de error y un mensaje descriptivo.
         public AgregarResult Agregar(string nombre, string descripcion)
         {
             using (var context = new ExamenContext())
@@ -32,6 +41,10 @@ namespace BdiExamen.DAL
             }
         }
 
+        // Actualiza un examen existente en la base de datos.
+        // Devuelve un objeto OperationResult que indica si la operación fue exitosa o fallida.
+        // En caso de éxito, incluye un mensaje de confirmación.
+        // En caso de fallo, incluye un código de error y un mensaje descriptivo.
         public OperationResult Actualizar(int id, string nombre, string descripcion)
         {
             using (var context = new ExamenContext())
@@ -61,6 +74,10 @@ namespace BdiExamen.DAL
             }
         }
 
+        // Elimina un examen existente de la base de datos.
+        // Devuelve un objeto OperationResult que indica si la operación fue exitosa o fallida.
+        // En caso de éxito, incluye un mensaje de confirmación.
+        // En caso de fallo, incluye un código de error y un mensaje descriptivo.
         public OperationResult Eliminar(int id)
         {
             using (var context = new ExamenContext())
@@ -89,6 +106,9 @@ namespace BdiExamen.DAL
             }
         }
 
+        // Consulta exámenes en la base de datos según los criterios proporcionados.
+        // Devuelve un objeto ConsultaResult que indica si la operación fue exitosa o fallida.
+        // En caso de éxito, incluye la lista de resultados y un mensaje de confirmación.
         public ConsultaResult Consultar(int? id, string nombre, string descripcion)
         {
             using (var context = new ExamenContext())

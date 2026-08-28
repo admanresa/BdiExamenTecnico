@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 
 namespace BdiExamen.ApiExamen.Gateways
 {
+    // Interfaz que define los métodos para interactuar con la fuente de datos de exámenes.
     public interface IExamenGateway
     {
         Task<AgregarResult> AgregarAsync(string nombre, string descripcion);
