@@ -1,0 +1,63 @@
+﻿@model ExamenIndexViewModel
+@{
+    ViewBag.Title = "Listado de Exámenes";
+}
+
+<h2>Consultar Exámenes</h2>
+
+@if (!string.IsNullOrEmpty(Model.Mensaje))
+{
+    <div class="alert @(Model.EsError ? "alert-danger" : "alert-success")">
+        @Model.Mensaje
+    </div>
+}
+
+<form method="get">
+    <div class="form-group">
+        <label>ID:</label>
+        <input type="text" name="id" value="@Model.FiltroId" />
+    </div>
+    <div class="form-group">
+        <label>Nombre:</label>
+        <input type="text" name="nombre" value="@Model.FiltroNombre" />
+    </div>
+    <div class="form-group">
+        <label>Descripción:</label>
+        <input type="text" name="descripcion" value="@Model.FiltroDescripcion" />
+    </div>
+    <button type="submit" class="btn">Consultar</button>
+    <a href="@Url.Action("Index")" class="btn">Limpiar</a>
+    <a href="@Url.Action("Create")" class="btn btn-success">Nuevo</a>
+</form>
+
+@if (Model.Examenes != null && Model.Examenes.Count > 0)
+{
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var examen in Model.Examenes)
+            {
+                <tr>
+                    <td>@examen.Id</td>
+                    <td>@examen.Nombre</td>
+                    <td>@examen.Descripcion</td>
+                    <td>
+                        <a href="@Url.Action("Edit", new { id = examen.Id })" class="btn">Editar</a>
+                        <a href="@Url.Action("Delete", new { id = examen.Id })" class="btn btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else if (Model.Examenes == null || Model.Examenes.Count == 0)
+{
+    <p>No hay exámenes para mostrar.</p>
+}

@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="BdiExamen.ApiExamen/BdiExamen.ApiExamen.csproj" Id="f6a499bd-ed9d-42fb-9965-a455bebcc8a8" />
+  <Project Path="BdiExamen.DAL/BdiExamen.DAL.csproj" Id="95cb7343-9122-40ee-8bb6-47a672f9cb2e" />
+  <Project Path="BdiExamen.Model/BdiExamen.Model.csproj" Id="9d949e3b-36ad-4d8a-a0cb-7bb824509916" />
+  <Project Path="BdiExamen.WsApiexamen/BdiExamen.WsApiexamen.csproj" Id="5b071c63-91cb-4663-8005-002bc71e04a0" />
+  <Project Path="BdiExamen.WinFormsExamen/BdiExamen.WinFormsExamen.csproj" Id="ebdc1268-f9a5-40c2-9606-5238d05ffa04" />
+  <Project Path="BdiExamen.MvcExamen/BdiExamen.MvcExamen.csproj" Id="6ecd8ce5-d70e-44a5-9132-1ab2b809ab6c" />
+</Solution>

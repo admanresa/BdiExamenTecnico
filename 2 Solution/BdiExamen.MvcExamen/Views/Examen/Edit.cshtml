@@ -1,0 +1,28 @@
+﻿@model ExamenFormViewModel
+@{
+    ViewBag.Title = "Editar Examen";
+}
+
+<h2>Editar Examen</h2>
+
+@using (Html.BeginForm("Edit", "Examen", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <form>
+        <div class="form-group">
+            <label>ID:</label>
+            @Html.TextBoxFor(m => m.Id, new { @readonly = "readonly" })
+        </div>
+        <div class="form-group">
+            <label>Nombre:</label>
+            @Html.TextBoxFor(m => m.Nombre)
+        </div>
+        <div class="form-group">
+            <label>Descripción:</label>
+            @Html.TextAreaFor(m => m.Descripcion)
+        </div>
+        <button type="submit" class="btn btn-success">Guardar Cambios</button>
+        <a href="@Url.Action("Index")" class="btn">Cancelar</a>
+    </form>
+}

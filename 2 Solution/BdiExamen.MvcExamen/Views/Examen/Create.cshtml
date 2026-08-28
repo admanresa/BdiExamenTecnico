@@ -1,0 +1,24 @@
+﻿@model ExamenFormViewModel
+@{
+    ViewBag.Title = "Agregar Examen";
+}
+
+<h2>Agregar Nuevo Examen</h2>
+
+@using (Html.BeginForm("Create", "Examen", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <form>
+        <div class="form-group">
+            <label>Nombre:</label>
+            @Html.TextBoxFor(m => m.Nombre)
+        </div>
+        <div class="form-group">
+            <label>Descripción:</label>
+            @Html.TextAreaFor(m => m.Descripcion)
+        </div>
+        <button type="submit" class="btn btn-success">Guardar</button>
+        <a href="@Url.Action("Index")" class="btn">Cancelar</a>
+    </form>
+}
