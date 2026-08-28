@@ -154,11 +154,11 @@ Ambos muestran en pantalla los errores y el éxito de las operaciones (la valida
 
 Las configuraciones necesarias (contienen `Data Source=.\SQLExpress`, local) están **por proyecto** en:
 
-| Proyecto | Archivo | Clave | Para qué se usa | ¿Obligatoria? |
-|----------|---------|-------|-----------------|---------------|
-| `BdiExamen.WsApiexamen` | `Web.config` | `ExamenContext` | Conexión WebService → BD (la usa `ExamenContext`/EF en `BdiExamen.DAL`) | Sí |
-| `BdiExamen.WinFormsExamen` | `App.config` | `ExamenSqlDirecto` | Conexión del front de escritorio en modo **Stored Procedures** (la lee `SpExamenGateway` de `apiexamen.dll` desde la configuración del ejecutable) | Sí (para modo SP) |
-| `BdiExamen.MvcExamen` | `Web.config` | `WsApiexamenBaseUrl` | URL donde está publicado el WebService (la lee `ExamenController`) | Sí |
+| Proyecto | Archivo | Clave | Para qué se usa |
+|----------|---------|-------|-----------------|
+| `BdiExamen.WsApiexamen` | `Web.config` | `ExamenContext` | Conexión WebService → BD (la usa `ExamenContext`/EF en `BdiExamen.DAL`) |
+| `BdiExamen.WinFormsExamen` | `App.config` | `ExamenSqlDirecto` | Conexión del front de escritorio en modo **Stored Procedures** (la lee `SpExamenGateway` de `apiexamen.dll` desde la configuración del ejecutable) |
+| `BdiExamen.MvcExamen` | `Web.config` | `WsApiexamenBaseUrl` | URL donde está publicado el WebService (la lee `ExamenController`) |
 
 Notas:
 - `BdiExamen.ApiExamen\App.config` también define `ExamenSqlDirecto` y `WsApiexamenBaseUrl`, pero **no se usa en tiempo de ejecución**: al ser una librería, `ConfigurationManager` lee la configuración de la aplicación anfitriona (el `.exe` o `web.config`), no la del `.dll`. Por eso no se lista.
