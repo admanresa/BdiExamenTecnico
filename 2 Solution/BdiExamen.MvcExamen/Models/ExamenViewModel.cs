@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace BdiExamen.MvcExamen.Models
 {
+    // ViewModel para la vista de índice de Examenes
     public class ExamenIndexViewModel
     {
         public List<Examen> Examenes { get; set; } = new List<Examen>();
@@ -12,7 +13,7 @@ namespace BdiExamen.MvcExamen.Models
         public string FiltroNombre { get; set; }
         public string FiltroDescripcion { get; set; }
     }
-
+    // ViewModel para la vista de formulario de Examen
     public class ExamenFormViewModel
     {
         public int Id { get; set; }

@@ -6,17 +6,18 @@ using System.Text;
 
 namespace BdiExamen.MvcExamen.Services
 {
+    // Clase cliente para interactuar con ApiExamen, implementando la interfaz IExamenApiClient.
     public class ExamenApiClient : IExamenApiClient
     {
         private readonly string _baseUrl;
         private readonly HttpClient _httpClient;
-
+        // Constructor que inicializa la URL base y el cliente HTTP
         public ExamenApiClient(string baseUrl)
         {
             _baseUrl = baseUrl.TrimEnd('/');
             _httpClient = new HttpClient();
         }
-
+        // Método genérico para manejar excepciones y retornar un resultado de fallback
         private static T Guard<T>(Func<T> action, Func<string, T> fallback)
         {
             try
@@ -28,7 +29,7 @@ namespace BdiExamen.MvcExamen.Services
                 return fallback(ex.Message);
             }
         }
-
+        // Método para consultar exámenes con parámetros opcionales
         public ConsultaResult Consultar(int? id = null, string nombre = null, string descripcion = null)
         {
             return Guard(
@@ -58,7 +59,7 @@ namespace BdiExamen.MvcExamen.Services
                     DescripcionRetorno = $"Error en consulta: {msg}"
                 });
         }
-
+        // Método para agregar un nuevo examen
         public AgregarResult Agregar(string nombre, string descripcion)
         {
             return Guard(
@@ -79,7 +80,7 @@ namespace BdiExamen.MvcExamen.Services
                     DescripcionRetorno = $"Error al agregar: {msg}"
                 });
         }
-
+        // Método para actualizar un examen existente
         public OperationResult Actualizar(int id, string nombre, string descripcion)
         {
             return Guard(
@@ -104,7 +105,7 @@ namespace BdiExamen.MvcExamen.Services
                     DescripcionRetorno = $"Error al actualizar: {msg}"
                 });
         }
-
+        // Método para eliminar un examen por su ID
         public OperationResult Eliminar(int id)
         {
             return Guard(

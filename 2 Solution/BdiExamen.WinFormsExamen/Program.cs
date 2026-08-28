@@ -3,6 +3,7 @@ using System.Windows.Forms;
 
 namespace BdiExamen.WinFormsExamen
 {
+    // Punto de entrada principal para la aplicación
     static class Program
     {
         [STAThread]

@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace BdiExamen.WinFormsExamen.Services
 {
+    // Servicio que encapsula la lógica para interactuar con ApiExamen
+    // Implementa la interfaz IExamenService para garantizar que se cumplan los contratos de servicio definidos.
+    // Proporciona métodos asincrónicos para consultar, agregar, actualizar y eliminar exámenes.
     public class ExamenService : IExamenService
     {
         private readonly clsExamen _examen;
