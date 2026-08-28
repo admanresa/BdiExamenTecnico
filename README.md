@@ -86,8 +86,6 @@ BdiExam/
     └── packages/                  ← Paquetes NuGet (EF 6, MVC 5, Web API 2, Newtonsoft.Json)
 ```
 
-> Nota: dentro de `2 Solution\BdiExamen\` hay una carpeta residual (`BdiExamen.WsApiexamen/bin`) que no forma parte de la solución y puede borrarse.
-
 ---
 
 ## Descripción y alineación de cada proyecto con la tarea
